@@ -684,6 +684,34 @@
   }
 
   /**
+   * Converts a value into an array, or clones it if it is already.
+   *
+   * @static
+   * @memberOf _
+   * @category Array
+   * @param {*} maybeArray The value that might be an array.
+   * @returns {Array} An array containing the value, or the cloned value.
+   * @example
+   *
+   * _.asArray(10);
+   * // => [10]
+   *
+   * _.asArray([10]);
+   * // => [10]
+   *
+   * var ary = [1, 2, 3];
+   *
+   * _.asArray(ary);
+   * // => [1, 2, 3]
+   *
+   * _.asArray(ary) === ary;
+   * // => false
+   */
+  function asArray(maybeArray) {
+    return isArray(maybeArray) ? clone(maybeArray) : [maybeArray];
+  }
+
+  /**
    * The base implementation of methods like `_.max` and `_.min` which accepts a
    * `comparator` to determine the extremum value.
    *
@@ -14348,6 +14376,7 @@
 
     // Add functions that return unwrapped values when chaining.
     lodash.add = add;
+    lodash.asArray = asArray;
     lodash.attempt = attempt;
     lodash.camelCase = camelCase;
     lodash.capitalize = capitalize;
